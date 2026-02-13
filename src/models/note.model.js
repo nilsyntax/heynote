@@ -31,7 +31,8 @@ export function noteModel(title="Untitled", content=""){
       createdAt: now,
       lastUpdate: now,
       lastOpened: now,
-      pinned: false
+      pinned: false,
+      readonly: false
    }
 }
 
