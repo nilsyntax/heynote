@@ -15,6 +15,13 @@ export class Store {
       if(savedNote){ this.state = savedNote }
    }
 
+   // An update function
+   setState(updater){  // param = an any funciton that responsible to update data
+      updater(this.state)
+      this.notify()
+      this._save()
+   }
+
    subscribe(renderer){
       this.listners.push(renderer);
    }
@@ -23,6 +30,9 @@ export class Store {
       this.listners.forEach(render => {
          render()
       })
+   }
+   _save(){
+      save(this.state)
    }
 }
 
