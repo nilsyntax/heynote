@@ -16,11 +16,27 @@ export function noteModel(title="Untitled", content=""){
    const now = Date.now()
 
    function validTitle(title){
-      return typeof title === "string" && title.trim().length > 0 ? title.trim() : "Untitled"
+      let valid
+      
+      if(title === "string" && title.trim().length > 0) {
+         valid = title.trit()
+      }
+      else {valid = "Untitled"}
+      
+      return valid;
+      // return typeof title === "string" && title.trim().length > 0 ? title.trim() : "Untitled"
    }
 
+
    function validContent(content){
-      return typeof content === "string" && String(content ?? "")
+      let valid
+      if (typeof content === "string" && String(content)){
+         valid = content
+      }
+
+      else { valid = String("") }
+      return valid
+      // return typeof content === "string" && String(content ?? "")
    }
 
    return {

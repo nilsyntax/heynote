@@ -8,12 +8,3 @@ export function load(){
 
    return data ? JSON.parse(data) : null
 }
-
-
-/*
-Title, Content, careted At(date)
-
-let notes = [
-
-]
-*/
