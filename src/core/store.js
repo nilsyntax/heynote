@@ -6,7 +6,7 @@ export class Store {
       this.state = {
           notes: [],
           tabs: [],
-          activeNoteId: null
+          activeTabId: null
       }
 
       this.listners = []
