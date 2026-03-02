@@ -1,25 +1,35 @@
 import { Store } from "./core/store";
 import { Service } from "./core/noteService";
+import { Tab } from "./core/tab";
 
-// ui import
-import { appLayout } from "./ui/layout";
-
-
-
-const store = new Store();
+import { renderApp } from "./ui/render";
 
 
-const services = new Service(store)
+const store = new Store()
+const getState = store.getState()
+
+const noteServices = new Service(store)
+const tabManager = new Tab(store)
 
 
+store.subscribe(() => renderApp(getState, noteServices, tabManager))
+renderApp(getState, noteServices, tabManager)
 
-document.addEventListener("DOMContentLoaded", () => {
+
+// // document.addEventListener("DOMContentLoaded", () => {
    
-   const appRoot = document.getElementById('app')
-   appLayout(appRoot)
+// //    const appRoot = document.getElementById('app')
+// //    appLayout(appRoot)
    
-})
+// //    let createButton = document.querySelector("#create-note")
+// //    console.log(createButton);
+   
+// // })
 
-
+// const appRoot = document.getElementById('app')
+// appLayout(appRoot)
+   
 
 // console.log(appRoot);
+
+

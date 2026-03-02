@@ -12,7 +12,7 @@
 // }
 // ```
 
-export function noteModel(title="Untitled", content=""){
+export function noteModel(title="Untitled", content="Write Your Note"){
    const now = Date.now()
 
    function validTitle(title){
@@ -52,4 +52,4 @@ export function noteModel(title="Untitled", content=""){
    }
 }
 
-console.log(noteModel("Hello", "This is Hello World"))
+// console.log(noteModel("Hello", "This is Hello World"))
