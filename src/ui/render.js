@@ -1,10 +1,9 @@
 
 
-import { aside } from "./aside";
-import { workspace } from "./workspace";
-import { noteItem } from "./components";
-import { tabItem } from "./components";
-
+import { aside } from "./aside/aside";
+import { workspace } from "./workspace/workspace";
+import { noteItem, tabItem } from "./components";
+import { attachTabEvent, attachNoteEvent } from "./event";
 
 export function renderApp(state, noteServices, tabManager) {
   const root = document.getElementById("app")
@@ -23,58 +22,7 @@ export function renderApp(state, noteServices, tabManager) {
     const note = state.notes.find(n => n.id === tab.history[tab.historyIndex])
     tabSpace.append(tabItem(note, tab.id))
   })
-  attachEventTab(state, noteServices, tabManager)
+
+  attachTabEvent(state, noteServices, tabManager)
+  attachNoteEvent(noteServices)
 }
-
-
-
-// attach event after render updates
-function attachEventTab(state, services, tabManager) {
-  // Event one - create note + in new tab
-  const createNoteBtn = document.querySelector("#create-note")
-  createNoteBtn.addEventListener('click', () => {
-    const noteId = services.createNote()
-    tabManager.openNewTab(noteId)
-  })
-
-  // Event two - close tab
-  const tabSpace = document.querySelector("#tab-space")
-  tabSpace.addEventListener('click', (e) => {
-    const closeBtn = e.target.closest(".tabClose")
-    if (!closeBtn) return
-
-    const tabId = closeBtn.dataset.tabId
-    tabManager.closeTab(tabId)
-  })
-
-  // Event three - click note to open
-  const listItems = document.querySelector("#note-list")
-  listItems.addEventListener("click", (e) => {
-    const item = e.target.closest(".note-ref-item")
-    if (!item) return
-
-    const noteId = item.dataset.id
-
-    if (state.activeTabId === null) {
-      tabManager.openNewTab(noteId)
-    }
-    else if(e.ctrlKey){
-      tabManager.openNewTab(noteId)
-    }
-    else {
-      tabManager.openInTab(noteId)
-    }
-  })
-
-
-  // Event three - select tab
-
-
-  // Event four - back/forward
-
-}
-
-
-
-// Event two
-// const tabSpace = document.querySelector("#tab-space")
