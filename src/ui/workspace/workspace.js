@@ -1,5 +1,5 @@
-import { tabNavigation } from "./workspace/tabigation"
-import { noteSpace } from "./workspace/noteSapce"
+import { tabNavigation } from "./tabigation"
+import { noteSpace } from "./noteSapce"
 
 export function workspace() {
    const container = document.createElement("div")
