@@ -73,17 +73,22 @@ export class Tab {
          else {
             // if the closed tab is middle somether - set the next tab as active
             state.activeTabId = state.tabs[index].id
-            state.activeNoteId = state.tab[index].history[state.tabs[index].historyIndex]
+            state.activeNoteId = state.tabs[index].history[state.tabs[index].historyIndex]
          }
       })
    }
 
    // -----------------------------
-   selectTab(tabId, noteId) {
+   selectTab(tabId) {
       this.store.setState(state => {
+
          state.activeTabId = tabId
-         state.activeNoteId = noteId
-         // set note last opened id
+
+         const tab = state.tabs.find(t => t.id === tabId)
+         if (!tab) return
+
+         state.activeNoteId = tab.history[tab.historyIndex]
+
       })
    }
 
