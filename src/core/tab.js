@@ -34,7 +34,7 @@ export class Tab {
 
          activeTab.history.push(noteId)
          activeTab.historyIndex++
-         state.activeNoteId = activeTab.history[historyIndex]
+         state.activeNoteId = activeTab.history[activeTab.historyIndex]
       })
    }
 
@@ -101,6 +101,7 @@ export class Tab {
          if (activeTab.historyIndex > 0) {
             activeTab.historyIndex--
          }
+         state.activeNoteId = activeTab.history[activeTab.historyIndex]
       })
    }
 
@@ -112,6 +113,7 @@ export class Tab {
          if (activeTab.historyIndex < activeTab.history.length - 1) {
             activeTab.historyIndex++;
          }
+         state.activeNoteId = activeTab.history[activeTab.historyIndex]
       })
    }
 
