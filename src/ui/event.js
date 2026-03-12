@@ -1,8 +1,7 @@
 // attach event after render updates
 
-export function attachTabEvent(state, services, tabManager) {
-
-  // Event one - create note + in new tab
+export function attachEvent(state, services, tabManager) {
+  // Event one - create note + in ne  w tab
   const createNoteBtn = document.querySelector("#create-note")
   createNoteBtn.addEventListener('click', () => {
     const noteId = services.createNote()
@@ -10,39 +9,40 @@ export function attachTabEvent(state, services, tabManager) {
   })
 
 
-  // Event two - click note to open
+  // Event two - open note, opne in new tab, delete note
   const listItems = document.querySelector("#note-list")
   listItems.addEventListener("click", (e) => {
-    const item = e.target.closest(".note-ref-item")
-    if (!item) return
 
-    const noteId = item.dataset.id
+  const deleteBtn = e.target.closest(".delete-note")
 
-    if (state.activeTabId === null) {
-      tabManager.openNewTab(noteId)
-    }
-    else if (e.ctrlKey) {
-      tabManager.openNewTab(noteId)
-    }
-    else {
-      tabManager.openInTab(noteId)
-    }
-  })
+  if (deleteBtn) {
+    const noteItem = deleteBtn.closest(".note-ref-item")
+    const noteId = noteItem.dataset.id
 
-  // Event four - select tab
+    services.deleteNote(noteId)
 
-  // Event five - close tab
-  // const tabSpace = document.querySelector("#tab-space")
-  // tabSpace.addEventListener('click', (e) => {
-  //   const closeBtn = e.target.closest(".tabClose")
-  //   if (!closeBtn) return
+    return // stop here
+  }
 
-  //   const tabId = closeBtn.dataset.tabId
-  //   tabManager.closeTab(tabId)
-  // })
+  const item = e.target.closest(".note-ref-item")
+  if (!item) return
 
+  const noteId = item.dataset.id
+
+  if (state.activeTabId === null) {
+    tabManager.openNewTab(noteId)
+  }
+  else if (e.ctrlKey) {
+    tabManager.openNewTab(noteId)
+  }
+  else {
+    tabManager.openInTab(noteId)
+  }
+
+})
+
+  // Event 
   const tabSpace = document.querySelector("#tab-space")
-
   tabSpace.addEventListener("click", (e) => {
 
     const closeBtn = e.target.closest(".tabClose")
@@ -57,8 +57,8 @@ export function attachTabEvent(state, services, tabManager) {
       const tabId = tab.dataset.id
       tabManager.selectTab(tabId)
     }
-
   })
+
 
   // Event three - back/forward
   const historyCtrlBtn = document.querySelector(".history-ctrl-btn")
@@ -72,30 +72,110 @@ export function attachTabEvent(state, services, tabManager) {
       tabManager.goForward()
     }
   })
-}
 
 
-
-
-
-
-export function attachNoteEvent(services) {
-
-  const listItems = document.querySelector("#note-list")
-
-  listItems.addEventListener("click", (e) => {
-    const deleteBtn = e.target.closest(".delete-note")
-    if (!deleteBtn) return
-
-    console.log(deleteBtn);
-    const noteItem = deleteBtn.closest(".note-ref-item")
-    const noteId = noteItem.dataset.id
-    console.log(noteId);
-
-    services.deleteNote(noteId)
-  })
+  // const listItems = document.querySelector("#note-list")
 
 }
+
+
+
+// function attachTabEvent(state, services, tabManager) {
+
+// Event one - create note + in new tab
+// const createNoteBtn = document.querySelector("#create-note")
+// createNoteBtn.addEventListener('click', () => {
+//   const noteId = services.createNote()
+//   tabManager.openNewTab(noteId)
+// })
+
+
+// Event two - click note to open
+// const listItems = document.querySelector("#note-list")
+// listItems.addEventListener("click", (e) => {
+//   const item = e.target.closest(".note-ref-item")
+//   if (!item) return
+
+//   const noteId = item.dataset.id
+
+//   if (state.activeTabId === null) {
+//     tabManager.openNewTab(noteId)
+//   }
+//   else if (e.ctrlKey) {
+//     tabManager.openNewTab(noteId)
+//   }
+//   else {
+//     tabManager.openInTab(noteId)
+//   }
+// })
+
+// Event four - select tab
+
+// Event five - close tab
+// const tabSpace = document.querySelector("#tab-space")
+// tabSpace.addEventListener('click', (e) => {
+//   const closeBtn = e.target.closest(".tabClose")
+//   if (!closeBtn) return
+
+//   const tabId = closeBtn.dataset.tabId
+//   tabManager.closeTab(tabId)
+// })
+
+// const tabSpace = document.querySelector("#tab-space")
+
+// tabSpace.addEventListener("click", (e) => {
+
+//   const closeBtn = e.target.closest(".tabClose")
+//   if (closeBtn) {
+//     const tabId = closeBtn.dataset.tabId
+//     tabManager.closeTab(tabId)
+//     return
+//   }
+
+//   const tab = e.target.closest(".tab")
+//   if (tab) {
+//     const tabId = tab.dataset.id
+//     tabManager.selectTab(tabId)
+//   }
+
+// })
+
+//   // Event three - back/forward
+//   const historyCtrlBtn = document.querySelector(".history-ctrl-btn")
+//   historyCtrlBtn.addEventListener('click', (e) => {
+//     // find the active tab
+//     //
+//     if (e.target.closest("#backward")) {
+//       tabManager.goBack()
+//     }
+//     if (e.target.closest("#forward")) {
+//       tabManager.goForward()
+//     }
+//   })
+// }
+
+
+
+
+
+
+// export function attachNoteEvent(services) {
+
+//   const listItems = document.querySelector("#note-list")
+
+//   listItems.addEventListener("click", (e) => {
+//     const deleteBtn = e.target.closest(".delete-note")
+//     if (!deleteBtn) return
+
+//     // console.log(deleteBtn);
+//     const noteItem = deleteBtn.closest(".note-ref-item")
+//     const noteId = noteItem.dataset.id
+//     // console.log(noteId);
+
+//     services.deleteNote(noteId)
+//   })
+
+// }
 
 
 

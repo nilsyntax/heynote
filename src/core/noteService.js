@@ -24,12 +24,12 @@ export class Service {
       })
    }
 
-   deleteNote(id) {
+   deleteNote(noteId) {
       this.store.setState(state => {
-         state.notes = state.notes.filter(n => n.id !== id) // removed
+         state.notes = state.notes.filter(n => n.id !== noteId) // removed
 
          state.tabs = state.tabs.filter(tab => {
-            const index = tab.history.indexOf(id)
+            const index = tab.history.indexOf(noteId)
 
             if (index === -1) return true
 
@@ -39,16 +39,11 @@ export class Service {
                tab.historyIndex--
             }
 
-            if (index === tab.historyIndex) {
-               tab.historyIndex = Math.min(tab.historyIndex, tab.history.length - 1)
+            if (tab.historyIndex >= tab.history.length) {
+               tab.historyIndex = tab.history.length - 1
             }
             return tab.history.length > 0
          })
-          
-         // fix active tab
-         if (!state.tabs.some(t => t.id === state.activeTabId)) {
-            state.activeTabId = state.tabs[0]?.id || null
-         }
       })
    }
 }

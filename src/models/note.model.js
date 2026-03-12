@@ -14,14 +14,16 @@
 
 export function noteModel(title="Untitled", content="Write Your Note"){
    const now = Date.now()
+   const randomNumber = Math.floor(Math.random() * 100) + 1
+   const randomTitle = title + randomNumber
 
-   function validTitle(title){
+   function validTitle(randomTitle){
       let valid
       
-      if(title === "string" && title.trim().length > 0) {
-         valid = title.trit()
+      if(randomTitle === "string" && randomTitle.trim().length > 0) {
+         valid = randomTitle.trim()
       }
-      else {valid = "Untitled"}
+      else {valid = "Untitled" + randomNumber}
       
       return valid;
       // return typeof title === "string" && title.trim().length > 0 ? title.trim() : "Untitled"
@@ -41,7 +43,7 @@ export function noteModel(title="Untitled", content="Write Your Note"){
 
    return {
       id: crypto.randomUUID(),
-      title: validTitle(title),
+      title: validTitle(randomTitle),
       content: validContent(content),
       tags: [],
       createdAt: now,

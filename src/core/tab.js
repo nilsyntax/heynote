@@ -47,7 +47,7 @@ export class Tab {
          const index = state.tabs.findIndex(ti => ti.id === tabId)
          if (index === -1) return
 
-         // check if tab is active or not store into isActive
+         // check if tab is active or not, store into isActive
          const isActive = state.activeTabId === tabId
 
          // filter out the tab from state
