@@ -9,3 +9,7 @@ html, body{
 #app {
    height: 100%;
 }
+
+.selectedTab {
+   background-color: #1e2939;
+}

@@ -7,7 +7,7 @@ export function noteSpace(){
           ${editModeIcon()}
         </span>
         <div id="editor" class="bg-gray-500 w-full h-full">
-            
+            Hello World
         </div>
         <div class="shortcut-hints w-full h-16 absolute bottom-0 bg-linear-to-b from-transparent to-gray-900/40">
         
