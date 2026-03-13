@@ -1,9 +1,9 @@
 import { circleIcon, closeIcon, deleteIcon} from "../assets/svgico"
 
-export function noteItem(note) {
+export function noteItem(note, isActive) {
    
    const div = document.createElement("div")
-   div.className = "note-ref-item relative text-sm px-1.5 py-1 flex gap-1.5 cursor-pointer text-gray-500"
+   div.className = `note-ref-item relative text-sm px-1.5 py-1 flex gap-1.5 cursor-pointer ${isActive ? "text-teal-600": "text-gray-500"}`
    div.dataset.id = note.id
    
    // ``
@@ -17,9 +17,9 @@ export function noteItem(note) {
 }
 
 
-export function tabItem(note, tabId){
+export function tabItem(note, tabId, isActive){
    const div = document.createElement("div")
-   div.className = "tab flex items-center min-w-0 w-40 h-full py-1.5 pl-2 pr-1.5 cursor-pointer bg-gray-700 relative"
+   div.className = `tab flex items-center min-w-0 w-40 h-full py-1.5 pl-2 pr-1.5 cursor-pointer ${isActive?"bg-gray-700":"bg-transparent"} relative`
    div.dataset.id = tabId
    
    const title = `<span class="block min-w-0 truncate text-gray-400 text-xs">${note.title}</span>`

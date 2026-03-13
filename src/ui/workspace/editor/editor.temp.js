@@ -1,8 +1,8 @@
 export function editorDummy(note) {   
    return `
-   <div>
-   <h1>${note.title}</h1>
-   <textarea>${note.content}</textarea>
+   <div class="px-10 py-5 w-full h-full">
+   <h1 class="text-3xl mb-4">${note.title}</h1>
+   <textarea class="w-full h-full">${note.content}</textarea>
    </div>
    `
 }
