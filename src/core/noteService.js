@@ -44,6 +44,20 @@ export class Service {
             }
             return tab.history.length > 0
          })
+
+         // fix active tab
+         if (!state.tabs.some(t => t.id === state.activeTabId)) {
+            state.activeTabId = state.tabs[0]?.id ?? null
+         }
+
+         // fix active note
+         if (state.activeNoteId === noteId) {
+            const activeTab = state.tabs.find(t => t.id === state.activeTabId)
+            state.activeNoteId = activeTab
+               ? activeTab.history[activeTab.historyIndex]
+               : null
+         }
+
       })
    }
 }

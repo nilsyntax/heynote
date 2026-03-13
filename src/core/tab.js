@@ -26,6 +26,20 @@ export class Tab {
          if (!activeTab) return
 
          const { history, historyIndex } = activeTab
+
+         // already active
+         if (history[historyIndex] === noteId) return
+
+         // check if note already exists in history
+         const existingIndex = history.indexOf(noteId)
+
+         if (existingIndex !== -1) {
+            // move pointer only
+            activeTab.historyIndex = existingIndex
+            state.activeNoteId = noteId
+            return
+         }
+
          if (activeTab.history[activeTab.historyIndex] === noteId) return
 
          if (historyIndex < history.length - 1) {
@@ -59,6 +73,7 @@ export class Tab {
          // last tab closed? set activeTabId to null
          if (state.tabs.length === 0) {
             state.activeTabId = null
+            state.activeNoteId = null
             return
          }
 
