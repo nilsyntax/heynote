@@ -14,17 +14,17 @@ export const circleIcon = () => `
 </svg>
 `
 export const deleteIcon = () => `
-<svg class="inline-block w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 4V6H15V4H9Z"></path></svg>
+<svg class="inline-block w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(207,207,207,1)" stroke="none" stroke-width="1"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 4V6H15V4H9Z"></path></svg>
 `
 export const closeIcon = () => `
 <svg class="w-4 h-4 ml-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(207,207,207,1)"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>
 `
 
-export const arrowForwardIcon = () => `
+export const arrowBackIcon = () => `
 <svg class="w-4 h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgb(153 161 175)"><path d="M12 13V20L4 12L12 4V11H20V13H12Z"></path></svg>
 `
 
-export const arrowBackIcon = () => `
+export const arrowForwardIcon = () => `
 <svg class="w-4 h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgb(153 161 175)"><path d="M12 13H4V11H12V4L20 12L12 20V13Z"></path></svg>
 `
 

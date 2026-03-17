@@ -36,7 +36,7 @@ export function renderApp(state, noteServices, tabManager) {
   const currentActiveNote = state.notes.find(n => n.id === state.activeNoteId)
   // console.log("Current Active Note\n", currentActiveNote)
   if(!currentActiveNote) {
-    editorArea.innerHTML = "No note Opened"
+    editorArea.innerHTML = `<h1 class="m-auto text-4xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">Open or Create a Note</h1>`
   }
   else{
     editorArea.innerHTML = `${editorDummy(currentActiveNote)}`
